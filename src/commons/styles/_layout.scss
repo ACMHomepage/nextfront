@@ -1,0 +1,11 @@
+@mixin main-part {
+  width: 1376px;
+  max-width: 100%;
+  padding: 0.5rem;
+}
+
+@mixin flex-center {
+  display: flex;
+  place-content: center;
+  place-items: center;
+}

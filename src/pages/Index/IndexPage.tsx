@@ -1,6 +1,10 @@
+import Nav from 'src/commons/components/Nav';
+
 const Index = () => {
   return (
-    <h1>Hello</h1>
+    <>
+      <Nav />
+    </>
   );
 }
 

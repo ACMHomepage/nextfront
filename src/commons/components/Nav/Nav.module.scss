@@ -1,0 +1,13 @@
+@use 'layout';
+
+.header {
+  @include layout.flex-center;
+
+  position: sticky;
+  border-bottom: 1px solid #DDD;
+}
+
+.nav {
+  @include layout.main-part;
+  @include layout.flex-center;
+}
