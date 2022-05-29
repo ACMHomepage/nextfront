@@ -2,6 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Index from 'src/pages/Index';
 
+const Url = () => '/';
+
 const Home: NextPage = () => {
   return (
     <>
@@ -14,4 +16,6 @@ const Home: NextPage = () => {
   );
 }
 
-export default Home
+export default Home;
+
+export { Url };

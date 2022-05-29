@@ -1,3 +1,7 @@
+import Link from 'next/link';
+
+import { Url } from 'pages/index';
+
 import Icon from "src/commons/components/Icon";
 import Button from "src/commons/components/Button";
 import Flex from "src/commons/layouts/Flex";
@@ -9,9 +13,11 @@ const Nav = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <Button variant="outline">
-          <Icon from={AcmHomepage} variant="lg" />
-        </Button>
+        <Link href={Url()}>
+          <Button variant="outline">
+            <Icon from={AcmHomepage} variant="lg" />
+          </Button>
+        </Link>
         <Flex />
         <span>End</span>
       </nav>
