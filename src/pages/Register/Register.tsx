@@ -1,12 +1,12 @@
 import Nav from 'src/commons/components/Nav';
 
-const Index = () => {
+const Register = () => {
   return (
     <>
       <Nav />
-      Index
+      Register
     </>
-  );
-}
+  )
+};
 
-export default Index;
+export default Register;

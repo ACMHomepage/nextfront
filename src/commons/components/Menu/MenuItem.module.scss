@@ -1,0 +1,8 @@
+@use 'interface';
+
+.menuItem {
+  @include interface.clickable;
+
+  place-content: center flex-start;
+  padding: 0.25rem 0.75rem;
+}
