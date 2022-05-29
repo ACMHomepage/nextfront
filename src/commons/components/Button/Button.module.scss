@@ -5,12 +5,15 @@
   @include interface.clickable;
 
   color: color.$brand-darker;
+  padding: 0.375rem;
 
   &.va_outline {
-    border: 1px solid color.$brand-lighter;
+    border: 1px solid color.$border;
+    background-color: white;
 
-    &:hover {
+    &:hover, &:focus, &:focus-visible {
       border: 1px solid color.$brand-darker;
+      background-color: white;
     }
   }
 

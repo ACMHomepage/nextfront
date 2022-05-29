@@ -6,7 +6,8 @@ $labelFontSize: 0.75rem;
 $inputRawLineHeight: 1.75rem;
 $inputRawFontSize: 1.25rem;
 $sepHeight: 0.125rem;
-$padding: 0.375rem;
+$padding-y: 0.375rem;
+$padding-x: 0.625rem;
 
 $inputLineHeight: $labelLineHeight + $inputRawLineHeight + $sepHeight;
 
@@ -14,9 +15,9 @@ $inputLineHeight: $labelLineHeight + $inputRawLineHeight + $sepHeight;
   .label {
     position: absolute;
     line-height: $inputLineHeight;
-    font-size: $inputRawLineHeight;
+    font-size: $inputRawFontSize;
     transition: line-height duration.$base, font-size duration.$base, color duration.$base;
-    padding: $padding;
+    padding: $padding-y $padding-x;
     border: 1px solid transparent;
     color: color.$helper;
 
@@ -32,10 +33,10 @@ $inputLineHeight: $labelLineHeight + $inputRawLineHeight + $sepHeight;
 
   .inputRaw {
     width: 100%;
-    padding-top: ($labelLineHeight + $sepHeight + $padding);
-    padding-bottom: $padding;
-    padding-right: $padding;
-    padding-left: $padding;
+    padding-top: ($labelLineHeight + $sepHeight + $padding-y);
+    padding-bottom: $padding-y;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
     line-height: $inputRawLineHeight;
     font-size: $inputRawFontSize;
     outline: 0;

@@ -5,7 +5,6 @@
 @mixin clickable {
   @include layout.flex-center;
 
-  padding: 0.25rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   color: inherit;
