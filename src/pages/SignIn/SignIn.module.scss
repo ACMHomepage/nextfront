@@ -1,0 +1,7 @@
+@use 'layout';
+
+.box {
+  @include layout.flex-center;
+
+  padding-top: 8rem;
+}

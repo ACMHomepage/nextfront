@@ -6,6 +6,7 @@ import styles from './Input.module.scss';
 
 interface InputProps {
   label: string;
+  className?: string;
   type?: HTMLInputTypeAttribute;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
@@ -13,7 +14,12 @@ interface InputProps {
 type State = 'inputed' | 'inputed-focus' | 'uninputed' | 'uninputed-focus';
 
 const Input = (props: InputProps) => {
-  const { label, type, onChange: onChangeRaw = () => null } = props;
+  const {
+    label,
+    className,
+    type,
+    onChange: onChangeRaw = () => null
+  } = props;
   const [state, setState] = useState<State>('uninputed');
   const ref = useRef<HTMLInputElement | null>(null);
 
@@ -59,7 +65,7 @@ const Input = (props: InputProps) => {
 
   return (
     <ClickAwayListener onClickAway={onClickAway}>
-      <div className={styles.input} onClick={onClick}>
+      <div className={classNames(styles.input, className)} onClick={onClick}>
         <label className={labelClassName}>{ label }</label>
         <input
           type={type}

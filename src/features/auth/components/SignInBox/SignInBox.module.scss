@@ -1,6 +1,28 @@
+@use 'layout';
+@use 'color';
+
 .signInBox {
+  @include layout.main-part;
+
   display: flex;
-  direction: column;
-  padding: 1rem;
-  gap: 1rem;
+  flex-direction: column;
+  width: 30rem;
+
+  .header {
+    margin: 0;
+  }
+
+  .par {
+    margin: 0 0 2rem 0;
+    color: color.$helper;
+  }
+
+  .input {
+    margin-top: 1rem;
+  }
+
+  .signInButton {
+    margin-top: 3rem;
+    font-size: 1.25rem;
+  }
 }
