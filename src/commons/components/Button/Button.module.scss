@@ -4,12 +4,17 @@
 .button {
   @include interface.clickable;
 
+  color: color.$brand-darker;
+
   &.va_outline {
-    color: color.$brand-darker;
     border: 1px solid color.$brand-lighter;
 
     &:hover {
       border: 1px solid color.$brand-darker;
     }
+  }
+
+  &.va_icon {
+    border-radius: 999999px;
   }
 }

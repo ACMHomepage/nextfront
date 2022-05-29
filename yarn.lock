@@ -2626,6 +2626,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lucide-react@^0.49.0:
+  version "0.49.0"
+  resolved "https://registry.npmmirror.com/lucide-react/-/lucide-react-0.49.0.tgz#a8664d30dbff76041618b0cf078a2e322014566c"
+  integrity sha512-5jD6k4UKU+S7Sjcu5q4JoEOir6F2PntSvZ3LXMyHd84fXu93JUTz+WDegA2nn7DR9v0xPntxbGwiI4dor1ymZw==
+
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.npmmirror.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"

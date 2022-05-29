@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { User } from 'lucide-react';
 
 import { Url } from 'pages/index';
 
@@ -15,11 +16,13 @@ const Nav = () => {
       <nav className={styles.nav}>
         <Link href={Url()}>
           <Button variant="outline">
-            <Icon from={AcmHomepage} variant="lg" />
+            <Icon from={AcmHomepage} widthAuto />
           </Button>
         </Link>
         <Flex />
-        <span>End</span>
+        <Button variant='icon'>
+          <Icon from={User} />
+        </Button>
       </nav>
     </header>
   )
