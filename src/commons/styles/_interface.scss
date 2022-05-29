@@ -1,0 +1,22 @@
+@use 'layout';
+@use 'color';
+@use 'duration';
+
+@mixin clickable {
+  @include layout.flex-center;
+
+  padding: 0.25rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color duration.$base, border-color duration.$base;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background-color: color.$brand-lighter-3;
+  }
+}

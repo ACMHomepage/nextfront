@@ -1,4 +1,5 @@
 import Icon from "src/commons/components/Icon";
+import Button from "src/commons/components/Button";
 import Flex from "src/commons/layouts/Flex";
 
 import AcmHomepage from './assets/AcmHomepage.svg';
@@ -8,7 +9,9 @@ const Nav = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <Icon from={AcmHomepage} />
+        <Button variant="outline">
+          <Icon from={AcmHomepage} variant="lg" />
+        </Button>
         <Flex />
         <span>End</span>
       </nav>

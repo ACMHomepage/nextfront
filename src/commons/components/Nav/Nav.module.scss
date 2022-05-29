@@ -1,10 +1,11 @@
 @use 'layout';
+@use 'color';
 
 .header {
   @include layout.flex-center;
 
   position: sticky;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid color.$border;
 }
 
 .nav {

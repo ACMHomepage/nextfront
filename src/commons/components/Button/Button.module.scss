@@ -1,0 +1,15 @@
+@use 'interface';
+@use 'color';
+
+.button {
+  @include interface.clickable;
+
+  &.va_outline {
+    color: color.$brand-darker;
+    border: 1px solid color.$brand-lighter;
+
+    &:hover {
+      border: 1px solid color.$brand-darker;
+    }
+  }
+}
