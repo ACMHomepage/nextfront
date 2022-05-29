@@ -4,7 +4,7 @@ import styles from './MenuItem.module.scss';
 
 interface MenuItemProps {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const MenuItem = (props: MenuItemProps) => {

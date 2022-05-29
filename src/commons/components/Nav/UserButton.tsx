@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { User } from 'lucide-react';
-import Link from 'next/link';
 
 import Button from "src/commons/components/Button";
 import Icon from "src/commons/components/Icon";
 import Popover from 'src/commons/components/Popover';
 import Menu from 'src/commons/components/Menu';
+
+import UserMenuItemList from 'src/features/auth/components/UserMenuItemList';
 
 const UserButton = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -29,12 +30,7 @@ const UserButton = () => {
       </Button>
       <Popover anchorEl={anchorEl} onClickAway={onClickaway}>
         <Menu>
-          <Link href="/sign-in">
-            <Menu.Item>Sign in</Menu.Item>
-          </Link>
-          <Link href="/register">
-            <Menu.Item>Register</Menu.Item>
-          </Link>
+          <UserMenuItemList />
         </Menu>
       </Popover>
     </>
