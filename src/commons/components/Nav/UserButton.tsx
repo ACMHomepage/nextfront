@@ -16,7 +16,7 @@ const UserButton = () => {
   }
 
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (anchorEl) {
+    if (anchorEl !== null) {
       setAnchorEl(null);
     } else {
       setAnchorEl(e.currentTarget);

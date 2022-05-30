@@ -1,6 +1,6 @@
+import React, { forwardRef } from 'react';
 import ReactDom from 'react-dom';
 import ClickAwayListener from 'react-click-away-listener';
-import React, { forwardRef } from 'react';
 
 import styles from './Modal.module.scss';
 

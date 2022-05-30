@@ -7,14 +7,16 @@ interface MenuItemProps {
   onClick?: () => void;
 }
 
-const MenuItem = (props: MenuItemProps) => {
-  const { children, onClick } = props;
-
-  return (
-    <li className={styles.menuItem} onClick={onClick}>
-      { children }
-    </li>
-  );
-}
+const MenuItem = React.forwardRef(
+  (props: MenuItemProps, ref: React.Ref<HTMLLIElement>) => {
+    const { children, onClick } = props;
+  
+    return (
+      <li className={styles.menuItem} onClick={onClick} ref={ref}>
+        { children }
+      </li>
+    );
+  }
+);
 
 export default MenuItem;

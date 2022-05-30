@@ -16,6 +16,9 @@ const Popover = (props: PopoverProps) => {
   let ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if(!anchorEl) return;
+    if(!ref.current) return;
+
     const updatePosition = () => {
       if(!anchorEl) return;
       if(!ref.current) return;

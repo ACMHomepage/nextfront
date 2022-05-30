@@ -5,11 +5,11 @@ import { client } from 'src/utils/apolloGraphQL';
 
 import 'src/commons/styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  if (process.env.NODE_ENV === 'development') {
-    require('../src/mocks');
-  }
+if (process.env.NODE_ENV === 'development') {
+  require('../src/mocks');
+}
 
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <Component {...pageProps} />
