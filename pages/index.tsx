@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Index from 'src/pages/Index';
+import Index from 'src/features/basic/pages/Index';
 
 const url = () => '/';
 

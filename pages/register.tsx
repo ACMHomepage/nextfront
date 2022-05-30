@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import RegisterPage from 'src/pages/Register';
+import RegisterPage from 'src/features/auth/pages/Register';
 
 const url = () => '/register';
 

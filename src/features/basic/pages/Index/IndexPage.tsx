@@ -1,4 +1,4 @@
-import Nav from 'src/commons/components/Nav';
+import Nav from 'src/features/basic/components/Nav';
 
 const Index = () => {
   return (

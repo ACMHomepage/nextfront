@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import SignInPage from 'src/pages/SignIn';
+import SignInPage from 'src/features/auth/pages/SignIn';
 
 const url = () => '/sign-in';
 
