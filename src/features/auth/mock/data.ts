@@ -23,7 +23,7 @@ const addUser = (user: Omit<User, "id" | "isAdmin">) => {
       isAdmin: data.users.length === 0,
       ...user,
     })
-    return data.users.at(-1);
+    return data.users.at(-1) as User;
   }
   throw new Error(`The email ${user.email} is existed.`);
 }

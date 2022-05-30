@@ -11,7 +11,12 @@ interface SignInVars {
 }
 
 interface SignInData {
-  signIn: Omit<User, "password">
+  signIn: {
+    id: number;
+    nickname: string;
+    email: string;
+    isAdmin: boolean;
+  }
 };
 
 const SIGN_IN_MUTATION = gql`

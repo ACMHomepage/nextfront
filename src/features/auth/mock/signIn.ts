@@ -23,7 +23,7 @@ const signIn = graphql.mutation<SignInData, SignInVars>(
       })
     )
 
-    console.log(`[Mock] Get ${signIn}, return ${result}`)
+    console.log('[Mock] Get', signIn, 'return', result);
     return result;
   }
 )
