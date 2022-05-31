@@ -1,8 +1,12 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 
-import type { User } from './type';
+import { useDispatch } from 'src/store';
+
+import { signIn as signInAction } from '../slice';
+
+import { useAuthState } from './state';
 
 interface SignInVars {
   signIn: {
@@ -46,6 +50,16 @@ const useSignIn = () => {
     SignInVars
   >(SIGN_IN_MUTATION);
   const router = useRouter();
+  const authState = useAuthState();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (state.data) {
+      if (!authState.withInfo) {
+        dispatch(signInAction(state.data.signIn));
+      }
+    }
+  }, [state]);
   
   const signIn = useCallback(
     async(data: signInFnData, option?: signInFnOption) =>  {

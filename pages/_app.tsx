@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client';
+import { Provider } from 'react-redux';
 
+import store from 'src/store';
 import { client } from 'src/utils/apolloGraphQL';
 
 import 'src/commons/styles/globals.css';
@@ -11,10 +13,12 @@ if (process.env.NODE_ENV === 'development') {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ApolloProvider client={client}>
-      <Component {...pageProps} />
-      <div id="modal" />
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+        <div id="modal" />
+      </ApolloProvider>
+    </Provider>
   )
 }
 
