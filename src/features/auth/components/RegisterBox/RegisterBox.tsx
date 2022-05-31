@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { url as profileUrl } from 'pages/profile';
+
 import Input from "src/commons/components/Input";
 import Button from "src/commons/components/Button";
 
@@ -10,8 +12,15 @@ import styles from './RegisterBox.module.scss';
 const RegisterBox = () => {
   const [register, state] = useRegister();
   const [email, setEmail] = useState('');
-  const [nickName, setNickName] = useState('');
+  const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
+
+  const onClick = async () => {
+    await register(
+      { email, nickname, password },
+      { url: profileUrl() }
+    );
+  }
 
   return (
     <div className={styles.registerBox}>
@@ -27,7 +36,7 @@ const RegisterBox = () => {
       <Input
         className={styles.input}
         label="Nick name"
-        onChange={event => setNickName(event.target.value)}
+        onChange={event => setNickname(event.target.value)}
       />
       <Input
         className={styles.input}
@@ -38,7 +47,7 @@ const RegisterBox = () => {
       <Button
         className={styles.registerButton}
         variant="outline"
-        onClick={() => register(email, nickName, password)}
+        onClick={onClick}
       >
         Register
       </Button>

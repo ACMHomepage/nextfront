@@ -1,5 +1,6 @@
-import { gql, useMutation } from '@apollo/client';
 import { useCallback } from 'react';
+import { gql, useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
 
 interface RegisterVars {
   user: {
@@ -29,20 +30,34 @@ const REGISTER_MUTATION = gql`
   }
 `;
 
+interface RegisterFnData {
+  email: string;
+  nickname: string;
+  password: string;
+}
+
+interface RegisterFnOption {
+  url?: string;
+}
+
 const useRegister = () => {
   const [registerBase, state] = useMutation<
     RegisterData,
     RegisterVars
   >(REGISTER_MUTATION);
+  const router = useRouter();
 
   const register = useCallback(
-    async (email: string, nickname: string, password: string) => {
+    async (data: RegisterFnData, option?: RegisterFnOption) => {
       try {
         await registerBase({
           variables: {
-            user: { email, nickname, password }
+            user: data
           }
         });
+        if (state.error === undefined && option?.url !== undefined) {
+          router.push(option.url);
+        }
       } catch (_error) {
         /* Do nothing. */
       }

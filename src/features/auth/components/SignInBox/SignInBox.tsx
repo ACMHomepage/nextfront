@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { url as profileUrl } from 'pages/profile';
+
 import Input from "src/commons/components/Input";
 import Button from "src/commons/components/Button";
 
@@ -11,6 +13,10 @@ const SignInBox = () => {
   const [signIn, state] = useSignIn();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const onClick = () => {
+    signIn({ email, password }, { url: profileUrl() });
+  };
 
   return (
     <div className={styles.signInBox}>
@@ -32,7 +38,7 @@ const SignInBox = () => {
       <Button
         className={styles.signInButton}
         variant="outline"
-        onClick={() => signIn(email, password)}
+        onClick={onClick}
       >
         Sign in
       </Button>
