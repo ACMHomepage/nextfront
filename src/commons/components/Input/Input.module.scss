@@ -21,12 +21,12 @@ $inputLineHeight: $labelLineHeight + $inputRawLineHeight + $sepHeight;
     border: 1px solid transparent;
     color: color.$helper;
 
-    &.st_inputedFocus, &.st_uninputedFocus, &.st_inputed {
+    &.st_state_inputed, &.st_state_focus {
       line-height: $labelLineHeight;
       font-size: $labelFontSize;
     }
 
-    &.st_inputedFocus, &.st_uninputedFocus {
+    &.st_state_focus {
       color: color.$brand-darker;
     }
   }

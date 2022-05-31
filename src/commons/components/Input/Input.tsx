@@ -11,7 +11,10 @@ interface InputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-type State = 'inputed' | 'inputed-focus' | 'uninputed' | 'uninputed-focus';
+interface State {
+  inputed: boolean;
+  focus: boolean;
+}
 
 const Input = (props: InputProps) => {
   const {
@@ -20,32 +23,28 @@ const Input = (props: InputProps) => {
     type,
     onChange: onChangeRaw = () => null
   } = props;
-  const [state, setState] = useState<State>('uninputed');
+  const [state, setState] = useState<State>({ inputed: false, focus: false });
   const ref = useRef<HTMLInputElement | null>(null);
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const value = event.target.value;
-    if (value !== '' && state !== 'inputed-focus') {
-      setState('inputed-focus');
-    } else if (value === '' && state !== 'uninputed-focus') {
-      setState('uninputed-focus');
+    if (value !== '' && !state.inputed) {
+      setState({ inputed: true, focus: true });
+    } else if (value === '' && state.inputed) {
+      setState({ inputed: false, focus: true });
     }
     onChangeRaw(event);
   };
 
   const onClickAway = () => {
-    if (state === 'uninputed-focus') {
-      setState('uninputed');
-    } else if (state === 'inputed-focus') {
-      setState('inputed');
+    if (state.focus) {
+      setState({ ...state, focus: false });
     }
-  }
+  };
 
   const onClick = () => {
-    if (state === 'uninputed') {
-      setState('uninputed-focus');
-    } else if (state === 'inputed') {
-      setState('inputed-focus');
+    if (!state.focus) {
+      setState({ ...state, focus: true });
     }
     if (ref.current !== null) {
       ref.current.focus();
@@ -53,16 +52,12 @@ const Input = (props: InputProps) => {
   }
 
   let labelClassName = styles.label;
-  if (state === 'inputed-focus') {
-    labelClassName = classNames(labelClassName, styles.st_inputedFocus);
-  } else if (state === 'uninputed-focus') {
-    labelClassName = classNames(labelClassName, styles.st_uninputedFocus);
-  } else if (state === 'inputed') {
-    labelClassName = classNames(labelClassName, styles.st_inputed);
-  } else {
-    labelClassName = classNames(labelClassName, styles.st_uninputed);
+  if (state.focus) {
+    labelClassName = classNames(labelClassName, styles.st_state_focus);
   }
-
+  if (state.inputed) {
+    labelClassName = classNames(labelClassName, styles.st_state_inputed);
+  }
   return (
     <ClickAwayListener onClickAway={onClickAway}>
       <div className={classNames(styles.input, className)} onClick={onClick}>
