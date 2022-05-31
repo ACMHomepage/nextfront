@@ -9,7 +9,11 @@ const register = graphql.mutation<RegisterData, RegisterVars>(
   (req, res, ctx) => {
     const { user: userBase } = req.variables;
 
-    const user = addUser(userBase)!;
+    const userResult = addUser(userBase)!;
+    if (userResult.isErr()) {
+      return res(ctx.errors([{ message: userResult.error }]));
+    }
+    const user = userResult.value;
 
     const result = res(
       ctx.cookie('jwt', user.email),

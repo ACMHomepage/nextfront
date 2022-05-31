@@ -1,6 +1,11 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
+
+import { useDispatch } from 'src/store';
+
+import { useAuthState } from './state';
+import { signIn } from '../slice';
 
 interface RegisterVars {
   user: {
@@ -46,6 +51,16 @@ const useRegister = () => {
     RegisterVars
   >(REGISTER_MUTATION);
   const router = useRouter();
+  const authState = useAuthState();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (state.data) {
+      if (!authState.withInfo) {
+        dispatch(signIn(state.data.register));
+      }
+    }
+  }, [state]);
 
   const register = useCallback(
     async (data: RegisterFnData, option?: RegisterFnOption) => {

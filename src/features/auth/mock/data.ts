@@ -1,4 +1,5 @@
 import filter from 'lodash/filter';
+import { ok, err, Result } from 'neverthrow';
 
 interface User {
   id: number;
@@ -13,29 +14,30 @@ const data = {
   users: [] as User[],
 }
 
-const addUser = (user: Omit<User, "id" | "isAdmin">) => {
-  try {
-    const anotherUser = getUserByEmail(user.email);
-  } catch (error) {
-    data._id++;
-    data.users.push({
-      id: data._id,
-      isAdmin: data.users.length === 0,
-      ...user,
-    })
-    return data.users.at(-1) as User;
+type ErrorHandler = (message: string) => void;
+
+const addUser = (user: Omit<User, "id" | "isAdmin">): Result<User, string> => {
+  const anotherUserResult = getUserByEmail(user.email);
+  if (anotherUserResult.isOk()) {
+    return err(`The email ${user.email} is existed.`);
   }
-  throw new Error(`The email ${user.email} is existed.`);
+  data._id++;
+  data.users.push({
+    id: data._id,
+    isAdmin: data.users.length === 0,
+    ...user,
+  })
+  return ok(data.users.at(-1) as User);
 }
 
-const getUserByEmail = (email: string) => {
+const getUserByEmail = (email: string): Result<User, string> => {
   const users = filter(data.users, user => user.email === email);
   if (users.length === 0) {
-    throw new Error(`The email ${email} is not existed.`);
+    return err(`The email ${email} is not existed.`);
   } else if (users.length !== 1) {
-    throw new Error('I am teapot');
+    return err('I am teapot');
   }
-  return users[0];
+  return ok(users[0]);
 }
 
 export { addUser, getUserByEmail };

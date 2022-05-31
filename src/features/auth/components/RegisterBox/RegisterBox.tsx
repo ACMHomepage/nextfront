@@ -4,6 +4,7 @@ import { url as profileUrl } from 'pages/profile';
 
 import Input from "src/commons/components/Input";
 import Button from "src/commons/components/Button";
+import ErrorMsg from '../ErrorMsg';
 
 import { useRegister } from "../../apis";
 
@@ -44,6 +45,7 @@ const RegisterBox = () => {
         type="password"
         onChange={event => setPassword(event.target.value)}
       />
+      <ErrorMsg state={state}/>
       <Button
         className={styles.registerButton}
         variant="outline"

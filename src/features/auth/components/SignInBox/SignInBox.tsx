@@ -4,6 +4,7 @@ import { url as profileUrl } from 'pages/profile';
 
 import Input from "src/commons/components/Input";
 import Button from "src/commons/components/Button";
+import ErrorMsg from "../ErrorMsg";
 
 import { useSignIn } from "../../apis";
 
@@ -35,6 +36,7 @@ const SignInBox = () => {
         type="password"
         onChange={event => setPassword(event.target.value)}
       />
+      <ErrorMsg state={state} />
       <Button
         className={styles.signInButton}
         variant="outline"
