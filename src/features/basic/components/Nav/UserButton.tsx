@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { User } from 'lucide-react';
 
 import Button from "src/commons/components/Button";
-import Icon from "src/commons/components/Icon";
+import Avatar from "src/features/user/components/Avatar";
 import Popover from 'src/commons/components/Popover';
 import Menu from 'src/commons/components/Menu';
 
@@ -26,7 +26,7 @@ const UserButton = () => {
   return (
     <>
       <Button variant='icon' onClick={onClick}>
-        <Icon from={User} />
+        <Avatar self />
       </Button>
       <Popover anchorEl={anchorEl} onClickAway={onClickaway}>
         <Menu>

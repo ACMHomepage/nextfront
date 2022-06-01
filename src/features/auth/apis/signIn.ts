@@ -68,8 +68,9 @@ const useSignIn = () => {
         if (state.error === undefined && option?.url !== undefined) {
           router.push(option.url);
         }
-      } catch (_error) {
+      } catch (error) {
         /* Do nothing. */
+        console.error(error);
       }
     },
     [signInBase],

@@ -1,0 +1,10 @@
+@use 'color';
+
+.avatarNickname {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.125rem;
+  border-radius: 999999px;
+  background-color: color.$brand;
+  color: white;
+}

@@ -1,8 +1,9 @@
-import { signIn, register } from 'src/features/auth/mock';
+import { signIn, register, signOut } from 'src/features/auth/mock';
 
 const handers = [
   signIn,
   register,
+  signOut,
 ];
 
 export default handers;
