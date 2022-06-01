@@ -1,0 +1,7 @@
+@use 'color';
+
+.menuDivider {
+  border: none;
+  height: 1px;
+  background-color: color.$border;
+}

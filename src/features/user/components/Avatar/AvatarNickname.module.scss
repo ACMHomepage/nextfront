@@ -1,10 +1,23 @@
 @use 'color';
+@use 'layout';
 
 .avatarNickname {
-  width: 1.5rem;
-  height: 1.5rem;
+  @include layout.flex-center;
+
   padding: 0.125rem;
   border-radius: 999999px;
   background-color: color.$brand;
   color: white;
+
+  &.po_size_default {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  &.po_size_lg {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
 }

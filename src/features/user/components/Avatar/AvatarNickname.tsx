@@ -1,11 +1,14 @@
+import classNames from 'classnames';
+
 import styles from './AvatarNickname.module.scss';
 
 interface AvatarNickname {
   nickname: string;
+  size?: 'default' | 'lg';
 }
 
 const AvatarNickname = (props: AvatarNickname) => {
-  const { nickname } = props;
+  const { nickname, size = 'default' } = props;
 
   const nicknameArray = nickname.split(' ');
   const result = nicknameArray
@@ -14,8 +17,15 @@ const AvatarNickname = (props: AvatarNickname) => {
     .join('')
     .toUpperCase();
 
+  const classNameBase = styles.avatarNickname;
+  const classNameSize = {
+    default: styles.po_size_default,
+    lg: styles.po_size_lg,
+  }
+  const className = classNames(classNameBase, classNameSize[size]);
+
   return (
-    <div className={styles.avatarNickname}>
+    <div className={className}>
       {result}
     </div>
   )

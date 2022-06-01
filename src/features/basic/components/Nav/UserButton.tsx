@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { User } from 'lucide-react';
 
 import Button from "src/commons/components/Button";
 import Avatar from "src/features/user/components/Avatar";
 import Popover from 'src/commons/components/Popover';
 import Menu from 'src/commons/components/Menu';
 
+import ProfileMenuItemList from 'src/features/user/components/ProfileMenuItemList';
 import AuthMenuItemList from 'src/features/auth/components/AuthMenuItemList';
 
 const UserButton = () => {
@@ -30,6 +30,7 @@ const UserButton = () => {
       </Button>
       <Popover anchorEl={anchorEl} onClickAway={onClickaway}>
         <Menu>
+          <ProfileMenuItemList />
           <AuthMenuItemList />
         </Menu>
       </Popover>

@@ -3,10 +3,11 @@ import AvatarNickname from './AvatarNickname';
 
 interface AvatarUserProps {
   userId: number;
+  size?: 'default' | 'lg';
 }
 
 const AvatarUser = (props: AvatarUserProps) => {
-  const { userId } = props;
+  const { userId, size } = props;
 
   const [user, state] = useUser(userId);
   if (state.loading) {
@@ -19,7 +20,7 @@ const AvatarUser = (props: AvatarUserProps) => {
     )
   }
   return (
-    <AvatarNickname nickname={user!.nickname} />
+    <AvatarNickname nickname={user!.nickname} size={size} />
   );
 }
 

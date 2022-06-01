@@ -11,13 +11,17 @@ interface AvatarUserProps {
   userId: number;
 }
 
-type AvatarProps = AvatarSelfProps | AvatarUserProps;
+type AvatarProps = (AvatarSelfProps | AvatarUserProps) & {
+  size?: 'default' | 'lg';
+};
 
 const Avatar = (props: AvatarProps) => {
+  const { size } = props;
+
   if ('self' in props) {
-    return <AvatarSelf />;
+    return <AvatarSelf size={size} />;
   } else {
-    return <AvatarUser userId={props.userId} />
+    return <AvatarUser userId={props.userId} size={size} />
   }
 }
 

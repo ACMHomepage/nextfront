@@ -6,9 +6,7 @@ const AuthMenuItemListForLogged = () => {
   const [signOut, _state] = useSignOut();
 
   return (
-    <>
-      <Menu.Item onClick={signOut}>Sign out</Menu.Item>
-    </>
+    <Menu.Item onClick={signOut}>Sign out</Menu.Item>
   );
 };
 
