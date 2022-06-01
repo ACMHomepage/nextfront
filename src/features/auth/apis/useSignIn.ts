@@ -6,7 +6,7 @@ import { useDispatch } from 'src/store';
 
 import { signIn as signInAction } from '../slice';
 
-import { useAuthState } from './state';
+import useAuthState from './useAuthState';
 
 interface SignInVars {
   signIn: {
@@ -78,6 +78,6 @@ const useSignIn = () => {
   return [signIn, state] as [typeof signIn, typeof state];
 }
 
-export { useSignIn };
+export default useSignIn;
 
 export type { SignInVars, SignInData };

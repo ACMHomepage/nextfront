@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { useDispatch } from 'src/store';
 
-import { useAuthState } from './state';
+import useAuthState from './useAuthState';
 import { signIn } from '../slice';
 
 interface RegisterVars {
@@ -83,6 +83,6 @@ const useRegister = () => {
   return [register, state] as [typeof register, typeof state];
 }
 
-export { useRegister };
+export default useRegister;
 
 export type { RegisterVars, RegisterData };

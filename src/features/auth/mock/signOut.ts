@@ -1,6 +1,6 @@
 import { graphql } from 'msw';
 
-import { getUserByEmail } from './data';
+import { getUserByEmail } from './commons/data';
 
 const signOut = graphql.mutation(
   'signOut',

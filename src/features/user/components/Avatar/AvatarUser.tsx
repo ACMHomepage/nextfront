@@ -1,4 +1,4 @@
-import useUser from '../../apis/useUser';
+import useUser from 'src/features/user/apis/useUser';
 import AvatarNickname from './AvatarNickname';
 
 interface AvatarUserProps {

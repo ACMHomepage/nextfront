@@ -1,4 +1,4 @@
-import { useAuthState } from "./state"
+import useAuthState from "./useAuthState";
 
 const useSelf = () => {
   const authState = useAuthState();

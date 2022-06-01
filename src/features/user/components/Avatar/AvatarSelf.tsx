@@ -1,7 +1,7 @@
 import { User } from "lucide-react";
 import Icon from "src/commons/components/Icon";
 
-import useSelf from "src/features/auth/apis/useSelf"
+import useSelf from "src/features/auth/apis/useSelf";
 
 import AvatarNickname from "./AvatarNickname";
 

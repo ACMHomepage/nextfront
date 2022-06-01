@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import * as localStorage from 'src/utils/localStorage';
 
-import type { State, UserData } from './types';
-import { STORE_KEY, SLICE_NAME } from './constants';
+import type { State, UserData } from './commons/types';
+import { STORE_KEY, SLICE_NAME } from './commons/constants';
 
 const getInitState = (): State => {
   const logged = !!localStorage.getItem(STORE_KEY.logged);

@@ -1,8 +1,8 @@
 import { graphql } from 'msw';
 
-import { RegisterVars, RegisterData } from '../apis/register';
+import { RegisterVars, RegisterData } from 'src/features/auth/apis/useRegister';
 
-import { addUser } from './data';
+import { addUser } from './commons/data';
 
 const register = graphql.mutation<RegisterData, RegisterVars>(
   'register',

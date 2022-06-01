@@ -7,4 +7,4 @@ const useAuthState = () => {
   return authState;
 }
 
-export { useAuthState };
+export default useAuthState;

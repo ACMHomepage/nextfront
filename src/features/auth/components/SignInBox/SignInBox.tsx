@@ -6,7 +6,7 @@ import Input from "src/commons/components/Input";
 import Button from "src/commons/components/Button";
 import ErrorMsg from "../ErrorMsg";
 
-import { useSignIn } from "../../apis";
+import useSignIn from "src/features/auth/apis/useSignIn";
 
 import styles from './SignInBox.module.scss';
 

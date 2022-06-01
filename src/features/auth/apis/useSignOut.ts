@@ -3,7 +3,7 @@ import { useCallback, useEffect } from "react";
 import { useDispatch } from "src/store";
 import { signOut as signOutAction } from "../slice";
 
-import { useAuthState } from "./state";
+import useAuthState from "./useAuthState";
 
 const SIGNOUT_MUTATION = gql`
   mutation signOut {

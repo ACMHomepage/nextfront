@@ -1,8 +1,8 @@
 import { graphql } from 'msw';
 
-import { SignInVars, SignInData } from '../apis/signIn';
+import { SignInVars, SignInData } from 'src/features/auth/apis/useSignIn';
 
-import { getUserByEmail, User } from './data';
+import { getUserByEmail, User } from './commons/data';
 
 const signIn = graphql.mutation<SignInData, SignInVars>(
   'signIn',
