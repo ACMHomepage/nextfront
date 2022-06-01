@@ -11,4 +11,7 @@
 .nav {
   @include layout.main-part;
   @include layout.flex-center;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }

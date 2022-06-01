@@ -1,0 +1,56 @@
+@use 'layout';
+@use 'color';
+
+.header {
+  @include layout.flex-center;
+  flex-direction: column;
+
+  background: linear-gradient(to bottom, black 10rem, white 10rem);
+
+  .infomationWrapper {
+    @include layout.main-part;
+
+    padding-top: 4rem;
+
+    .infomation {
+      @include layout.flex-center;
+
+      flex-direction: column;
+      padding: 1rem;
+      background-color: white;
+      border: 1px solid color.$border;
+      border-radius: 0.25rem;
+
+      .avatarWrapper {
+        margin-top: -4rem;
+
+        .avatar {
+          padding: 0.5rem;
+          background-color: black;
+          border-radius: 999999px;
+        }
+      }
+
+      .nickname {
+        @include layout.flex-center;
+
+        margin: 1.5rem 0 0.25rem 0;
+        font-size: 1.75rem;
+        font-weight: 900;
+
+        .admin {
+          font-size: 1rem;
+          font-weight: 600;
+          padding: 0.25rem;
+          background-color: color.$border;
+          border-radius: 0.25rem;
+        }
+      }
+
+      .email {
+        margin-bottom: 1rem;
+        color: color.$helper;
+      }
+    }
+  }
+}

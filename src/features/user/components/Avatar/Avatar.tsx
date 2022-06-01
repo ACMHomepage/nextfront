@@ -12,16 +12,17 @@ interface AvatarUserProps {
 }
 
 type AvatarProps = (AvatarSelfProps | AvatarUserProps) & {
-  size?: 'default' | 'lg';
+  size?: 'default' | 'lg' | 'xl';
+  className?: string;
 };
 
 const Avatar = (props: AvatarProps) => {
-  const { size } = props;
+  const { size, className } = props;
 
   if ('self' in props) {
-    return <AvatarSelf size={size} />;
+    return <AvatarSelf size={size} className={className} />;
   } else {
-    return <AvatarUser userId={props.userId} size={size} />
+    return <AvatarUser userId={props.userId} size={size} className={className} />
   }
 }
 
