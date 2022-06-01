@@ -1,0 +1,18 @@
+@use 'color';
+@use 'layout';
+
+.createNews {
+  @include layout.flex-center;
+
+  .editorWrapper {
+    @include layout.news-part;
+
+    margin: 4rem 0 4rem 0;
+
+    .editor {
+      padding: 1rem;
+      border: 1px solid color.$border;
+      border-radius: 0.25rem;
+    }
+  }
+}

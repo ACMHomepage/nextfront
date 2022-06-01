@@ -16,7 +16,7 @@ const signOut = graphql.mutation(
     );
 
     console.log('[Mock] return', result);
-    return result
+    return result;
   },
 );
 

@@ -61,7 +61,9 @@ const Input = (props: InputProps) => {
   return (
     <ClickAwayListener onClickAway={onClickAway}>
       <div className={classNames(styles.input, className)} onClick={onClick}>
-        <label className={labelClassName}>{ label }</label>
+        <label className={labelClassName}>
+          { label }
+        </label>
         <input
           type={type}
           className={styles.inputRaw}

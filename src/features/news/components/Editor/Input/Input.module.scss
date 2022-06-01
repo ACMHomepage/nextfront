@@ -1,0 +1,55 @@
+@use 'color';
+
+@use "components/input";
+
+$padding: input.$paddingY input.$paddingX;
+$lineHeight: input.$lineHeight;
+$fontSize: input.$fontSize;
+$lineHeight_lg: input.$lineHeight_lg;
+$fontSize_lg: input.$fontSize_lg;
+
+.inputWrapper {
+  position: relative;
+
+  .label {
+    position: absolute;
+    padding: $padding;
+    line-height: $lineHeight;
+    font-size: $fontSize;
+    color: color.$helper;
+    cursor: text;
+    user-select: none;
+
+    &.po_size_sm {
+      line-height: input.$lineHeight_sm;
+      font-size: input.$fontSize_sm;
+    }
+    &.po_size_lg {
+      line-height: input.$lineHeight_lg;
+      font-size: input.$fontSize_lg;
+      font-weight: 900;
+    }
+    &.st_state_inputed {
+      display: none;
+    }
+  }
+
+  .input {
+    width: 100%;
+    padding: $padding;
+    line-height: $lineHeight;
+    font-size: $fontSize;
+    border:1px solid transparent;
+    outline: 0;
+
+    &.po_size_sm {
+      line-height: input.$lineHeight_sm;
+      font-size: input.$fontSize_sm;
+    }
+    &.po_size_lg {
+      line-height: $lineHeight_lg;
+      font-size: $fontSize_lg;
+      font-weight: 900;
+    }
+  }
+}

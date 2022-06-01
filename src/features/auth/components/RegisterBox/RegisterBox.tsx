@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { url as profileUrl } from 'pages/profile';
 
-import Input from "src/commons/components/Input";
+import TextField from "src/commons/components/TextField";
 import Button from "src/commons/components/Button";
 import ErrorMsg from '../ErrorMsg';
 
@@ -29,17 +29,17 @@ const RegisterBox = () => {
       <p className={styles.par}>
         Please enter your details to register.
       </p>
-      <Input
+      <TextField
         className={styles.input}
         label="Email"
         onChange={event => setEmail(event.target.value)}
       />
-      <Input
+      <TextField
         className={styles.input}
         label="Nick name"
         onChange={event => setNickname(event.target.value)}
       />
-      <Input
+      <TextField
         className={styles.input}
         label="Password"
         type="password"

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './Icon.module.scss';
 
 interface IconProps {
-  variant?: 'sm' | 'default' | 'lg' | 'xl';
+  variant?: 'xs' | 'sm' | 'default' | 'lg' | 'xl';
   widthAuto?: boolean;
   from: React.ComponentType<{ className: string }>;
   className?: string;
@@ -19,6 +19,7 @@ const Icon = (props: IconProps) => {
   } = props;
 
   const classNameVariant = {
+    xs: styles.va_xs,
     sm: styles.va_sm,
     default: styles.va_default,
     lg: styles.va_lg,

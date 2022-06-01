@@ -1,0 +1,26 @@
+@use 'color';
+
+.pictureUploader {
+  position: relative;
+
+  .button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .canvas {
+    width: 100%;
+    background-color: color.$border;
+    aspect-ratio: 5 / 2;
+    cursor: grab;
+  }
+}
+
+:root {
+  &.st_grabbing {
+    * {
+      cursor: grabbing !important;
+    }
+  }
+}

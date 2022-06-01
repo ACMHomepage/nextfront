@@ -1,0 +1,23 @@
+@use 'layout';
+@use 'color';
+
+.pictureUploader {
+  @include layout.flex-center;
+
+  flex-direction: column;
+  background-color: color.$border;
+  aspect-ratio: 5 / 2;
+
+  .hiddenInput {
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .errorMsg {
+    padding-top: 1rem;
+  }
+}

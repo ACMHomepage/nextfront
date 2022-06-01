@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { url as profileUrl } from 'pages/profile';
 
-import Input from "src/commons/components/Input";
+import TextField from "src/commons/components/TextField";
 import Button from "src/commons/components/Button";
 import ErrorMsg from "../ErrorMsg";
 
@@ -25,12 +25,12 @@ const SignInBox = () => {
       <p className={styles.par}>
         Please enter your email and password to sign in.
       </p>
-      <Input
+      <TextField
         className={styles.input}
         label="Email"
         onChange={event => setEmail(event.target.value)}
       />
-      <Input
+      <TextField
         className={styles.input}
         label="Password"
         type="password"

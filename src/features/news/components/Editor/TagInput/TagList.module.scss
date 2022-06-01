@@ -1,0 +1,29 @@
+@use "color";
+
+@use "components/input";
+
+.tag {
+  display: flex;
+  place-items: stretch center;
+  margin-left: input.$paddingX;
+  border: 1px solid color.$border;
+  background-color: color.$tag;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+
+  .main {
+    padding: 0.25rem 0.125rem 0.25rem 0.25rem;
+  }
+
+  .button {
+    display: flex;
+    place-items: center;
+    place-content: center;
+    color: color.$helper;
+    padding: 0.25rem 0.25rem 0.25rem 0.125rem;
+
+    &:hover {
+      background-color: color.$border;
+    }
+  }
+}

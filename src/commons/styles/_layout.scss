@@ -5,6 +5,13 @@
   padding-right: 1rem;
 }
 
+@mixin news-part {
+  width: 850px;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 @mixin flex-center {
   display: flex;
   place-content: center;

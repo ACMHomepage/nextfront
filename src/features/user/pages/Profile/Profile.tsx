@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { url as IndexUrl } from 'pages/index';
@@ -12,12 +13,18 @@ const Profile = () => {
   const self = useSelf();
   const router = useRouter();
 
+  // Only run in the client page
+  useEffect(() => {
+    if (self === undefined) {
+      router.push(IndexUrl());
+    }
+  }, [self]);
+
   if (self === undefined) {
-    router.push(IndexUrl());
     return null;
   }
 
-  return (
+    return (
     <>
       <Nav />
       <article className={styles.header}>

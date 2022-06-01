@@ -1,0 +1,12 @@
+@use 'color';
+
+.editor {
+  border: 1px solid color.$border;
+  border-radius: 0.25rem;
+
+  .hr {
+    border: none;
+    height: 1px;
+    background-color: color.$border;
+  }
+}
