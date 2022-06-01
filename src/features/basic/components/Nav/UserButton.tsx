@@ -7,6 +7,9 @@ import Menu from 'src/commons/components/Menu';
 
 import ProfileMenuItemList from 'src/features/user/components/ProfileMenuItemList';
 import AuthMenuItemList from 'src/features/auth/components/AuthMenuItemList';
+import NewsMenuItemList from 'src/features/news/components/NewsMenuItemList';
+
+import styles from './UserButton.module.scss';
 
 const UserButton = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -25,12 +28,13 @@ const UserButton = () => {
 
   return (
     <>
-      <Button variant='icon' onClick={onClick}>
+      <Button variant='icon' onClick={onClick} className={styles.button}>
         <Avatar self />
       </Button>
       <Popover anchorEl={anchorEl} onClickAway={onClickaway}>
         <Menu>
           <ProfileMenuItemList />
+          <NewsMenuItemList />
           <AuthMenuItemList />
         </Menu>
       </Popover>
