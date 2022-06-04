@@ -1,0 +1,77 @@
+@use 'layout';
+@use 'color';
+
+.barWrapper {
+  @include layout.flex-center;
+
+  padding-top: 5rem;
+
+  .bar {
+    @include layout.main-part;
+
+    position: relative;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      border: 1px solid color.$border;
+      border-radius: 2rem;
+      height: 32.5rem;
+
+      .fillerBegin {
+        flex: 1;
+      }
+
+      .title {
+        line-height: 0.8;
+        font-weight: 900;
+        padding: 2.25rem 2rem;
+
+        .bigTitle {
+          font-size: 8.5rem;
+        }
+
+        .littleTitle {
+          font-size: 6rem;
+        }
+      }
+      
+      .helper {
+        padding: 0.5rem 2rem;
+        color: color.$helper;
+        font-size: 1.5rem;
+        border-top: 1px solid color.$border;
+        border-bottom: 1px solid color.$border;
+      }
+
+      .buttonRow {
+        display: flex;
+        gap: 1rem;
+        padding: 2rem 2rem;
+        background: linear-gradient(to left, color.$border, white);
+
+        .button {
+          font-size: 1.5rem;
+          padding: 0.5rem 1.5rem;
+        }
+      }
+
+      .fillerEnd {
+        flex: 1;
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        background: linear-gradient(to left, color.$border, white);
+      }
+    }
+
+    .acmHomepageImage {
+      position: absolute;
+      right: -2.5rem;
+      bottom: -6.5rem;
+
+      width: 35rem;
+      height: 35rem;
+    }
+  }
+}

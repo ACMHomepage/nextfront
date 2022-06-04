@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import { url as indexUrl } from 'pages/index';
 
-import Nav from 'src/features/basic/components/Nav';
+import Nav from 'src/features/misc/components/Nav';
 import Editor from 'src/features/news/components/Editor';
 
 import useSelf from 'src/features/auth/apis/useSelf';

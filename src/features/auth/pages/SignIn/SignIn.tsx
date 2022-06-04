@@ -1,4 +1,4 @@
-import Nav from 'src/features/basic/components/Nav';
+import Nav from 'src/features/misc/components/Nav';
 
 import SignInBox from 'src/features/auth/components/SignInBox';
 
