@@ -1,24 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import PictureUploaderInit from "./PictureUploaderInit";
 import PictureUploaderPreview from "./PictureUploaderPreview";
 
-const PictureUploader = () => {
+interface PictureUploaderProps {
+  onChange: (picture: File | null) => void;
+};
+
+const PictureUploader = (props: PictureUploaderProps) => {
+  const { onChange } = props;
+
   const [file, setFile] = useState<File | null>(null);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>, file: File) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, file: File) => {
     setFile(file);
   }
 
-  const onBack = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleBack = (event: React.MouseEvent<HTMLButtonElement>) => {
     setFile(null);
+    onChange(null);
   }
 
-  return (
-    file === null
-      ? <PictureUploaderInit onChange={onChange} />
-      : <PictureUploaderPreview onBack={onBack} file={file} />
-  );
+  const result = useMemo(() => {
+    if (file === null) {
+      return (
+        <PictureUploaderInit
+          onChange={handleChange}
+        />
+      );
+    } else {
+      return (
+        <PictureUploaderPreview
+          onBack={handleBack}
+          file={file}
+          onChange={onChange}
+        />
+      );
+    }
+  }, [file, handleChange, handleBack]);
+
+  return result;
 };
 
 export default PictureUploader;

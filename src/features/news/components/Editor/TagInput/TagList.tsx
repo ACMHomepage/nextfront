@@ -12,8 +12,6 @@ interface TagListProps {
 const TagList = (props: TagListProps) => {
   const { value, onDeleteTag } = props;
 
-  console.log(value);
-
   return (
     <>
       {value.map(tag => {

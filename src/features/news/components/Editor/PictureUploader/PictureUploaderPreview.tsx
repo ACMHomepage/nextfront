@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import Button from "src/commons/components/Button";
 
@@ -8,10 +8,11 @@ import styles from './PictureUploaderPreview.module.scss';
 interface PictureUploaderPreviewProps {
   file: File;
   onBack: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange: (image: File) => void;
 }
 
 const PictureUploaderPreview = (props: PictureUploaderPreviewProps) => {
-  const { file, onBack } = props;
+  const { file, onBack, onChange: onChangeBase } = props;
 
   const [grabbing, setGrabbing] = useState(false);
 
@@ -40,7 +41,6 @@ const PictureUploaderPreview = (props: PictureUploaderPreviewProps) => {
       const imgHeight = img.height / img.width * imgWidth;
 
       x = Math.max(Math.min(x, 0), canvasWidth - imgWidth);
-      console.log(imgHeight, canvasHeight);
       y = Math.max(Math.min(y, 0), canvasHeight - imgHeight);
       ctx.drawImage(img, x, y, imgWidth, imgHeight);
     }
@@ -50,14 +50,16 @@ const PictureUploaderPreview = (props: PictureUploaderPreviewProps) => {
       setGrabbing(true);
     }
     const onMouseUp = (e: MouseEvent) => {
-      isDragging = false;
-      setGrabbing(false);
+      if (isDragging) {
+        isDragging = false;
+        setGrabbing(false);
+        onChange();
+      }
     }
     const onMouseMove = (e: MouseEvent) => {
       if (isDragging) {
         const offsetY = e.clientY - dragY;
         y += offsetY;
-        console.log(e.clientY, e.clientY - dragY, y);
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         drawImage();
         dragY = e.clientY;
@@ -66,6 +68,7 @@ const PictureUploaderPreview = (props: PictureUploaderPreviewProps) => {
 
     img.onload = () => {
       drawImage();
+      onChange();
     }
     img.src = url;
 
@@ -94,6 +97,21 @@ const PictureUploaderPreview = (props: PictureUploaderPreviewProps) => {
       document.documentElement.classList.remove(styles.st_grabbing);
     }
   }, [grabbing]);
+
+  const onChange = useCallback(async () => {
+    const canvas = canvasRef.current;
+    if (canvas === null) return;
+
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob(blob => {
+        if (blob) resolve(blob);
+        else reject('Cannot convert to blob');
+      }, 'image/png');
+    });
+
+    const realFile = new File([blob], file.name, { type: 'image/png', })
+    onChangeBase(realFile);
+  }, [canvasRef, onChangeBase]);
 
   return (
     <div className={styles.pictureUploader}>

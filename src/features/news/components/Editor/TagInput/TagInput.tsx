@@ -8,26 +8,26 @@ import ClickAwayListener from 'react-click-away-listener';
 
 interface TagInputProps {
   label: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: string[]) => void;
+  tagList: string[];
+  onChange?: (value: string[]) => void;
 }
 
 const TagInput = (props: TagInputProps) => {
   const {
     label,
+    tagList,
     onChange: onChangeBase = () => null,
   } = props;
-  const [tagList, setTagList] = useState(['@hide']);
   const [tag, setTag] = useState('');
 
   const handleTag = () => {
-    setTagList((tagList) => {
-      console.log('No1');
-      if (tag.trim() !== '' && !tagList.includes(tag)) {
-        return [...tagList, tag];
-      } else {
-        return tagList;
-      }
-    });
+    let newTagList;
+    if (tag.trim() !== '' && !tagList.includes(tag)) {
+      newTagList = [...tagList, tag];
+    } else {
+      newTagList = tagList;
+    }
+    onChangeBase(newTagList);
     setTag('');
   };
 
@@ -38,7 +38,6 @@ const TagInput = (props: TagInputProps) => {
     } else {
       setTag('');
     }
-    onChangeBase(event, tagList);
   };
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter' || event.key === ' ' || event.key === 'Tab') {
@@ -56,10 +55,8 @@ const TagInput = (props: TagInputProps) => {
     handleTag();
   }
   const onDeleteTag = (_e: React.MouseEvent, tag: string) => {
-    console.log(tagList, tag);
-    setTagList(tagList => {
-      return tagList.filter(value => value !== tag);
-    })
+    const newTagList = tagList.filter(value => value !== tag);
+    onChangeBase(newTagList);
   };
 
   return (
