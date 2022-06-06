@@ -1,3 +1,5 @@
+import filter from 'lodash/filter';
+
 interface News {
   id: number;
   title: string;
@@ -13,7 +15,18 @@ const data = {
 
 const addNews = (news: Omit<News, 'id'>) => {
   data._id ++;
-  return { id: data._id, ...news } as News;
+  const realNews: News = {
+    id: data._id,
+    ...news,
+  };
+  data.news.push(realNews);
+  return realNews;
 }
 
-export { addNews };
+const getNewsById = (newsId: number) => {
+  const result = filter(data.news, news => news.id === newsId);
+
+  return result[0];
+}
+
+export { addNews, getNewsById };

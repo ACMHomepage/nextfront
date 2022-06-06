@@ -2,6 +2,8 @@ import classNames from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import Button from "src/commons/components/Button";
+import fromCanvasToFile from "src/utils/convert/fromCanvasToFile";
+import fromFileToDataUrl from "src/utils/convert/fromFileToDataURL";
 
 import styles from './PictureUploaderPreview.module.scss';
 
@@ -102,14 +104,8 @@ const PictureUploaderPreview = (props: PictureUploaderPreviewProps) => {
     const canvas = canvasRef.current;
     if (canvas === null) return;
 
-    const blob = await new Promise<Blob>((resolve, reject) => {
-      canvas.toBlob(blob => {
-        if (blob) resolve(blob);
-        else reject('Cannot convert to blob');
-      }, 'image/png');
-    });
+    const realFile = await fromCanvasToFile(canvas, file.name);
 
-    const realFile = new File([blob], file.name, { type: 'image/png', })
     onChangeBase(realFile);
   }, [canvasRef, onChangeBase]);
 

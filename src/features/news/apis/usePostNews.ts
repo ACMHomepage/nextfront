@@ -1,6 +1,6 @@
 import { gql, MutationResult, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface News {
   title: string;
@@ -32,8 +32,10 @@ const ADD_NEWS_MUTATION = gql`
   }
 `;
 
+type UrlFn = (news: { id: number }) => string;
+
 interface PostNewsFnOption {
-  url: (news: { id: number }) => string;
+  url: UrlFn;
 }
 
 const usePostNews = () => {
@@ -43,18 +45,24 @@ const usePostNews = () => {
   >(ADD_NEWS_MUTATION);
   const router = useRouter();
 
+  const [urlFn, setUrlFn] = useState<UrlFn | null>(null);
+
+  useEffect(() => {
+    console.log(state, urlFn);
+    if (state.error !== undefined) return;
+    if (state.loading) return;
+    if (state.data === null || state.data === undefined) return;
+    if (urlFn !== null) {
+      const url = urlFn(state.data.addNews);
+      router.push(url);
+    }
+  }, [state, urlFn]);
+
   const postNews = useCallback(
     async (news: News, option?: PostNewsFnOption) => {
       try {
         await addNewsBase({ variables: { news }});
-        if (state.error !== undefined) return;
-        if (state.loading) return;
-        if (state.data === null || state.data === undefined) return;
-        if (option?.url !== undefined) {
-          const url = option.url(state.data.addNews);
-          console.log(url);
-          router.push(url);
-        }
+        setUrlFn(() => (option?.url ?? null));
       } catch (error) {
         /* Do nothing */
         console.error(error);

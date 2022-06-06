@@ -1,5 +1,5 @@
 import { signIn, register, signOut } from 'src/features/auth/mock';
-import { pictureBedApiPost, addNews } from 'src/features/news/mock';
+import { pictureBedApiPost, addNews, newsById } from 'src/features/news/mock';
 
 const handers = [
   signIn,
@@ -7,6 +7,7 @@ const handers = [
   signOut,
   pictureBedApiPost,
   addNews,
+  newsById,
 ];
 
 export default handers;
