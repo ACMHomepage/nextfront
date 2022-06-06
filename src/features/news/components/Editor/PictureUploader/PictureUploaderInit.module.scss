@@ -1,12 +1,12 @@
 @use 'layout';
 @use 'color';
+@use 'duration';
 
 .pictureUploader {
   @include layout.flex-center;
-
-  flex-direction: column;
-  background-color: color.$border;
   aspect-ratio: 5 / 2;
+  align-items: stretch;
+  border-bottom: 1px solid color.$border;
 
   .hiddenInput {
     position: absolute;
@@ -17,7 +17,34 @@
     opacity: 0;
   }
 
-  .errorMsg {
-    padding-top: 1rem;
+  .mainPart {
+    @include layout.flex-center;
+    flex: 1;
+    flex-direction: column;
+    background-color: color.$brand-lighter-3;
+    border: 4px dashed color.$brand;
+    border-radius: 1.5rem;
+    margin: 1rem;
+    transition: background-color duration.$base;
+    cursor: pointer;
+
+    .info {
+      font-size: 2.25rem;
+      font-weight: 900;
+    }
+
+    .infoHelper {
+      font-size: 1.25rem;
+      padding-top: 0.375rem;
+      color: color.$helper;
+    }
+
+    .errorMsg {
+      padding-top: 1rem;
+    }
+
+    &:hover {
+      background-color: color.$brand-lighter-2;
+    }
   }
 }

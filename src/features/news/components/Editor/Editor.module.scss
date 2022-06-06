@@ -1,46 +1,6 @@
 @use 'color';
 
-@use "components/input";
-
 .editor {
   border: 1px solid color.$border;
   border-radius: 0.25rem;
-
-  .editorBar {
-    display: flex;
-    padding: input.$paddingY input.$paddingX 0 input.$paddingX;
-    border-top: 1px solid color.$border;
-    border-bottom: 1px solid color.$border;
-    gap: 0.5rem;
-    background-color: color.$tag;
-
-    .tag {
-      border: 1px solid transparent;
-      border-top-left-radius: 0.25rem;
-      border-top-right-radius: 0.25rem;
-      padding: 0.5rem 1rem;
-      margin-bottom: -1px;
-      background-color: transparent;
-      font-size: 1rem;
-      color: color.$helper;
-
-      &.active {
-        border-top: 1px solid color.$border;
-        border-left: 1px solid color.$border;
-        border-right: 1px solid color.$border;
-        background-color: white;
-        color: black;
-      }
-    }
-
-    .rightPart {
-      padding-bottom: input.$paddingY;
-    }
-  }
-
-  .hr {
-    border: none;
-    height: 1px;
-    background-color: color.$border;
-  }
 }

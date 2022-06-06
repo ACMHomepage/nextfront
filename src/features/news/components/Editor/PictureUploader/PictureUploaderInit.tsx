@@ -42,14 +42,17 @@ const PictureUploaderInit = (props: PictureUploaderInitProps) => {
         className={styles.hiddenInput}
         onChange={onChange}
       />
-      <Button variant="filled" size="lg" onClick={onClick}>
-        Upload picture
-      </Button>
-      {
-        errorMsg
-          ? <span className={styles.errorMsg}>{errorMsg}</span>
-          : null
-      }
+      <div className={styles.mainPart} onClick={onClick}>
+        <div className={styles.info}>Upload picture</div>
+        <div className={styles.infoHelper}>
+          Supports JPG and PNG image
+        </div>
+        {
+          errorMsg
+            ? <div className={styles.errorMsg}>{errorMsg}</div>
+            : null
+        }
+      </div>
     </div>
   );
 };

@@ -3,8 +3,9 @@ import classNames from 'classnames';
 
 import styles from './TextArea.module.scss';
 
-interface InputProps {
+interface TextAreaProps {
   label: string;
+  value: string;
   size?: 'default' | 'lg';
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
@@ -13,13 +14,14 @@ interface State {
   inputed: boolean;
 }
 
-const Input = (props: InputProps) => {
+const TextArea = (props: TextAreaProps) => {
   const {
     label,
+    value,
     onChange: onChangeBase = () => null,
     size = 'default',
   } = props;
-  const [state, setState] = useState<State>({ inputed: false });
+  const [state, setState] = useState<State>({ inputed: value !== '' });
   const ref = useRef<HTMLTextAreaElement | null>(null);
 
   const onChange: React.ChangeEventHandler<HTMLTextAreaElement> = (event) => {
@@ -55,6 +57,7 @@ const Input = (props: InputProps) => {
       </label>
       <textarea
         ref={ref}
+        value={value}
         onChange={onChange}
         onFocus={onClick}
         className={inputClassName}
@@ -63,4 +66,4 @@ const Input = (props: InputProps) => {
   )
 }
 
-export default Input;
+export default TextArea;

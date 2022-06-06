@@ -9,6 +9,7 @@ import PictureUploader from './PictureUploader';
 import Input from './Input';
 import TagInput from './TagInput';
 import TextArea from './TextArea';
+import MarkdownTextArea from './MarkdownTextArea';
 
 import useUploadPicture from 'src/features/news/apis/useUploadPicture';
 import usePostNews from 'src/features/news/apis/usePostNews';
@@ -48,20 +49,8 @@ const Editor = () => {
         tagList={tagList}
         onChange={tagList => setTagList(tagList)}
       />
-      <div className={styles.editorBar}>
-        <button className={classNames(styles.tag, styles.active)}>
-          Write
-        </button>
-        <button className={classNames(styles.tag)}>Preview</button>
-        <Flex flex={1} />
-        <div className={styles.rightPart}>
-          <Button variant="filled" onClick={handlePostNewsClick}>
-            Post news
-          </Button>
-        </div>
-      </div>
-      <TextArea
-        label="Content Here..."
+      <MarkdownTextArea
+        onPostNewsClick={handlePostNewsClick}
         onChange={e => setContent(e.target.value)}
       />
     </div>

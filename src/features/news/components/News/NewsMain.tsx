@@ -1,5 +1,10 @@
 import Image from 'next/image';
 
+import Markdown from '../Markdown';
+import TagList from './TagList';
+
+import styles from './NewsMain.module.scss';
+
 interface NewsMainProps {
   news: {
     title: string;
@@ -14,10 +19,18 @@ const NewsMain = (props: NewsMainProps) => {
 
   return (
     <>
-      <img src={news.imageUrl} />
-      {news.title}
-      {news.tagList}
-      {news.content}
+      <div className={styles.image}>
+        <Image src={news.imageUrl} layout="fill"/>
+      </div>
+      <div className={styles.title}>
+        {news.title}
+      </div>
+      <div className={styles.tagList}>
+        <TagList value={news.tagList} />
+      </div>
+      <Markdown className={styles.content}>
+        {news.content}
+      </Markdown>
     </>
   )
 }

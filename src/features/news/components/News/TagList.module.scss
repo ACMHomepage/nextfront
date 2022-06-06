@@ -1,0 +1,16 @@
+@use "color";
+
+@use "components/input";
+
+.tag {
+  display: flex;
+  place-items: stretch center;
+  border: 1px solid color.$border;
+  background-color: color.$tag;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+
+  .main {
+    padding: 0.25rem;
+  }
+}
