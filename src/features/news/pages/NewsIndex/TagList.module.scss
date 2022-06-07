@@ -1,0 +1,42 @@
+@use "interface";
+@use "color";
+
+.newsTagList {
+  align-self: flex-start;
+  flex: 1;
+  width: 100%;
+  border: 1px solid color.$border;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+
+  .tag {
+    @include interface.clickable;
+
+    place-content: start;
+    padding: 0.5rem 0.75rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    transition: border-radius 0.2s;
+
+    &.st_active {
+      background-color: color.$brand;
+      color: white;
+
+      &.st_notBegin {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &.st_notEnd {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:hover {
+        background-color: color.$brand-darker;
+      }
+    }
+  }
+}

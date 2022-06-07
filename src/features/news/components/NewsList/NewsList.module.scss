@@ -1,8 +1,25 @@
 @use "color";
+@use "layout";
 
 .newsList {
   border: 1px solid color.$border;
-  padding: 1rem;
+  padding: 0rem;
   border-radius: 0.25rem;
   margin-bottom: 10rem;
+  align-self: flex-start;
+
+  .bar {
+    display: flex;
+    align-items: center;
+    color: color.$helper;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid color.$border;
+  }
+
+  .newsListContent {
+    @include layout.news-part;
+
+    padding: 1rem;
+  }
 }

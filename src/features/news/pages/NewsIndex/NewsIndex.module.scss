@@ -1,0 +1,16 @@
+@use "layout";
+@use "color";
+
+.newsIndexWrapper {
+  @include layout.flex-center;
+
+  margin-top: 5rem;
+
+  .newsIndex {
+    @include layout.main-part;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
