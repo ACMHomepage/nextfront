@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import Markdown from '../Markdown';
-import TagList from './TagList';
+import TagList from 'src/features/news/components/TagList';
 
 import styles from './NewsMain.module.scss';
 

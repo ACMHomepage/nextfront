@@ -38,8 +38,10 @@ const Popover = (props: PopoverProps) => {
     const throttleUpdatePosition = throttle(updatePosition, 5);
 
     window.addEventListener('resize', throttleUpdatePosition);
+    window.addEventListener('scroll', updatePosition);
     return () => {
       window.removeEventListener('resize', throttleUpdatePosition);
+      window.removeEventListener('scroll', updatePosition);
     }
   }, [anchorEl, ref]);
 

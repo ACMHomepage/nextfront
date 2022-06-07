@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <ApolloProvider client={client}>
         <Component {...pageProps} />
-        <div id="modal" />
+        <div id="modal" style={{ position: 'fixed', zIndex: 50 }} />
       </ApolloProvider>
     </Provider>
   )

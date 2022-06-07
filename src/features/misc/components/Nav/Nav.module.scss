@@ -5,7 +5,11 @@
   @include layout.flex-center;
 
   position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: white;
   border-bottom: 1px solid color.$border;
+  z-index: 10;
 }
 
 .nav {

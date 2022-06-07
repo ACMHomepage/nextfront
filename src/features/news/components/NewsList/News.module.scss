@@ -1,0 +1,46 @@
+@use "interface";
+@use "color";
+
+.news {
+  @include interface.clickable;
+
+  display: flex;
+  padding: 0.75rem 1rem;
+  gap: 1rem;
+  align-items: stretch;
+
+  .bar {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 999999px;
+    background-color: color.$brand-lighter;
+  }
+
+  .leftPart {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .tagList {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .title {
+      font-size: 1.625rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .imageWrapper {
+    position: relative;
+    width: 37%;
+    aspect-ratio: 5 / 2;
+
+    .image {
+      border-radius: 0.5rem;
+    }
+  }
+}

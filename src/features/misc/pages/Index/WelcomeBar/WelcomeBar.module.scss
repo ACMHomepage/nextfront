@@ -4,7 +4,7 @@
 .barWrapper {
   @include layout.flex-center;
 
-  padding-top: 5rem;
+  padding: 5rem 0;
 
   .bar {
     @include layout.main-part;

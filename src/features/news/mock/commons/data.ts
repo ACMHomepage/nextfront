@@ -29,4 +29,8 @@ const getNewsById = (newsId: number) => {
   return result[0];
 }
 
-export { addNews, getNewsById };
+const getNewsList = () => {
+  return data.news;
+}
+
+export { addNews, getNewsById, getNewsList };

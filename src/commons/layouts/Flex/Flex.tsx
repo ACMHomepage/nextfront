@@ -5,7 +5,7 @@ interface FlexProps {
 const Flex = (props: FlexProps) => {
   const { flex = 1 } = props;
 
-  return <span style={{ flex }} />;
+  return <div style={{ flex }} />;
 };
 
 export default Flex;

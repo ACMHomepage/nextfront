@@ -1,6 +1,8 @@
-import { gql, MutationResult, useMutation } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
+
+import useNewsList from "./useNewsList";
 
 interface News {
   title: string;
@@ -44,6 +46,7 @@ const usePostNews = () => {
     AddNewsVars
   >(ADD_NEWS_MUTATION);
   const router = useRouter();
+  const [_newsList, { refetch }] = useNewsList();
 
   const [urlFn, setUrlFn] = useState<UrlFn | null>(null);
 
@@ -63,6 +66,7 @@ const usePostNews = () => {
       try {
         await addNewsBase({ variables: { news }});
         setUrlFn(() => (option?.url ?? null));
+        refetch();
       } catch (error) {
         /* Do nothing */
         console.error(error);

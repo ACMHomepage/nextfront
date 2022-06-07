@@ -1,0 +1,8 @@
+@use "color";
+
+.newsList {
+  border: 1px solid color.$border;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 10rem;
+}

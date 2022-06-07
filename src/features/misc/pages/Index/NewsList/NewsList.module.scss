@@ -1,0 +1,10 @@
+@use 'layout';
+@use 'color';
+
+.wrapper {
+  @include layout.flex-center;
+
+  .newsList {
+    @include layout.news-part;
+  }
+}

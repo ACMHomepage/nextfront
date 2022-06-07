@@ -1,14 +1,10 @@
 import { useState } from 'react';
-import classNames from 'classnames';
 
 import { url as newsUrl } from 'pages/news/[newsId]';
 
-import Button from 'src/commons/components/Button';
-import Flex from 'src/commons/layouts/Flex';
 import PictureUploader from './PictureUploader';
 import Input from './Input';
 import TagInput from './TagInput';
-import TextArea from './TextArea';
 import MarkdownTextArea from './MarkdownTextArea';
 
 import useUploadPicture from 'src/features/news/apis/useUploadPicture';
