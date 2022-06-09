@@ -8,13 +8,16 @@ const url = () => `/news/`;
 
 const News: NextPage = () => {
   const router = useRouter();
+  const tagList = new Set(JSON.parse(
+    router.query.tagList as string ?? '[]'
+  ));
 
   return (
     <>
       <Head>
         <title>News | ACM Homepage</title>
       </Head>
-      <NewsIndex />
+      <NewsIndex onlyTag={tagList}/>
     </>
   )
 }

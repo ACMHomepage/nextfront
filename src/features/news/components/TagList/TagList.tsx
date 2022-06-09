@@ -1,7 +1,8 @@
-import { X } from 'lucide-react';
-import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import React from 'react';
 
-import Icon from 'src/commons/components/Icon';
+import { url as newsIndexUrl } from 'pages/news/index';
+
 import styles from './TagList.module.scss';
 
 interface TagListProps {
@@ -10,12 +11,20 @@ interface TagListProps {
 
 const TagList = (props: TagListProps) => {
   const { value } = props;
+  const router = useRouter();
 
   return (
     <>
       {value.map(tag => {
         return (
-          <div className={styles.tag} key={tag}>
+          <div
+            className={styles.tag}
+            key={tag}
+            onClick={() => router.push({
+              pathname: newsIndexUrl(),
+              query: { tagList: JSON.stringify([tag]) }
+            })}
+          >
             <span className={styles.main}>{tag}</span>
           </div>
         );
